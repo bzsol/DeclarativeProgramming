@@ -1,4 +1,4 @@
-(* Helper function to reverse a list *)
+
 fun reverse(xs) =
     let
         fun revHelper([], acc) = acc
@@ -7,7 +7,7 @@ fun reverse(xs) =
         revHelper(xs, [])
     end;
 
-(* Function to merge two sorted lists with early duplicate detection *)
+
 fun mergeWithDuplicateCheck([], ys) = (ys, false)
   | mergeWithDuplicateCheck(xs, []) = (xs, false)
   | mergeWithDuplicateCheck(x::xs, y::ys) =
@@ -26,7 +26,7 @@ fun mergeWithDuplicateCheck([], ys) = (ys, false)
                 (y::merged, dup)
             end;
 
-(* Function to iteratively merge sublists with early duplicate detection *)
+
 fun mergePairsWithDuplicateCheck([], acc) = (reverse(acc), false)
   | mergePairsWithDuplicateCheck([x], acc) = (reverse(x::acc), false)
   | mergePairsWithDuplicateCheck(x::y::xs, acc) =
@@ -39,7 +39,7 @@ fun mergePairsWithDuplicateCheck([], acc) = (reverse(acc), false)
                 mergePairsWithDuplicateCheck(xs, merged::acc)
         end;
 
-(* Function to iteratively merge until a single sorted list remains or a duplicate is found *)
+
 fun mergeSortIterWithDuplicateCheck([]) = ([], false)
   | mergeSortIterWithDuplicateCheck([x]) = (x, false)
   | mergeSortIterWithDuplicateCheck(xs) =
@@ -52,7 +52,7 @@ fun mergeSortIterWithDuplicateCheck([]) = ([], false)
                 mergeSortIterWithDuplicateCheck(merged)
         end;
 
-(* Main function to divide the list into sublists with early duplicate detection *)
+
 fun listifyWithDuplicateCheck(L) =
     let
         fun aux([], curr, res) = (reverse(curr :: res), false)
@@ -75,7 +75,7 @@ fun listifyWithDuplicateCheck(L) =
         aux(L, [], [])
     end;
 
-(* Main duplicates function with early duplicate detection *)
+
 fun duplicates2(L) =
     let
         val (sublists, dup) = listifyWithDuplicateCheck(L)
@@ -90,7 +90,7 @@ fun duplicates2(L) =
             end
     end;
 
-(* Simplified test cases *)
+
 val test1 = duplicates2([3,5,1,1,9,2,1,0]); (* true *)
 val test2 = duplicates2([1,2,3,4,5,6]);     (* false *)
 val test3 = duplicates2([5,4,3,2,1,1]);     (* true *)

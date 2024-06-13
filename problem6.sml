@@ -12,11 +12,11 @@ fun map_first_two f lst =
 fun curry3 f x y z = f (x, y, z)
 
 
-(* Example usage for map_first_two *)
+
 val result1 = map_first_two (op +) [2, 3, 4, 5, 7];
 (* result1 should be [5, 7, 9, 12] *)
 
-(* Example usage for curry3 *)
+
 fun add3 (x, y, z) = x + y + z;
 val curriedAdd3 = curry3 add3;
 val result2 = curriedAdd3 1 2 3;

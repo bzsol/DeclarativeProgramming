@@ -1,4 +1,4 @@
-(* Function to generate a list with n copies of a *)
+
 fun clone a n =
   let
     fun aux(0, acc) = acc
@@ -8,7 +8,7 @@ fun clone a n =
     else aux(n, [])
   end;
 
-(* Function to concatenate a list of strings with a separator *)
+
 fun sepConcat (sep, []) = ""
   | sepConcat (sep, [s]) = s
   | sepConcat (sep, s::ss) =
@@ -18,7 +18,7 @@ fun sepConcat (sep, []) = ""
         List.foldl foldHelper s ss
       end;
 
-(* Function to get the nth element of a list as an option *)
+
 fun listNth (lst, i) =
   let
     fun nthHelper ([], _) = NONE
@@ -28,7 +28,7 @@ fun listNth (lst, i) =
     if i < 0 then NONE else nthHelper (lst, i)
   end;
 
-(* Function to find the value associated with a key in an association list *)
+
 fun listAssoc (key, []) = NONE
   | listAssoc (key, (k, v)::rest) =
       if key = k then SOME v

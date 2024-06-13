@@ -1,15 +1,15 @@
 datatype 'a nestedList = List of 'a nestedList list | Elem of 'a
 
-(* Function to check if two nestedList elements are equal *)
+
 fun nestedListEqual (Elem x, Elem y) = x = y
   | nestedListEqual (List xs, List ys) = setEquals (List xs, List ys)
   | nestedListEqual (_, _) = false
 
-(* Function to check if a nestedList element exists in a list of nestedList elements *)
+
 and elemInNestedList (e, []) = false
   | elemInNestedList (e, x::xs) = nestedListEqual (e, x) orelse elemInNestedList (e, xs)
 
-(* Function to check if two nestedLists are equal *)
+
 and setEquals (List s1, List s2) =
     let
         fun lengthAndElemsMatch ([], []) = true
@@ -21,7 +21,7 @@ and setEquals (List s1, List s2) =
     end
   | setEquals (_, _) = false
 
-(* Function to perform union of two nestedLists *)
+
 fun union (List s1, List s2) =
     let
         fun addUnique ([], acc) = acc
@@ -34,7 +34,7 @@ fun union (List s1, List s2) =
     end
   | union (_, _) = raise Fail "Invalid input"
 
-(* Function to perform intersection of two nestedLists *)
+
 fun intersect (List s1, List s2) =
     let
         fun filterCommon ([], acc) = acc

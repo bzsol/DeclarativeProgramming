@@ -1,23 +1,23 @@
-(* Helper function to check if an element is in a list *)
+
 fun member(_, []) = false
   | member(x, y::ys) = (x = y) orelse member(x, ys);
 
-(* Helper function to check if all elements of one list are in another *)
+
 fun subset([], _) = true
   | subset(x::xs, ys) = member(x, ys) andalso subset(xs, ys);
 
-(* Function to test if two sets are equal *)
+
 fun setEquals(s1, s2) = subset(s1, s2) andalso subset(s2, s1);
 
-(* Function to perform union of two sets *)
+
 fun union([], s2) = s2
   | union(x::xs, s2) = if member(x, s2) then union(xs, s2) else x :: union(xs, s2);
 
-(* Function to perform intersection of two sets *)
+
 fun intersect([], _) = []
   | intersect(x::xs, s2) = if member(x, s2) then x :: intersect(xs, s2) else intersect(xs, s2);
 
-(* Test cases *)
+
 val testSetEquals1 = setEquals([1, 2, 3], [3, 2, 1]); (* Expected: true *)
 val testSetEquals2 = setEquals([1, 2], [3, 2, 1]); (* Expected: false *)
 val testSetEquals3 = setEquals(["clyde","blinky","sue"], ["sue","clyde","blinky"]); (* Expected: true *)
